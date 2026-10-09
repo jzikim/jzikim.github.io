@@ -1,5 +1,0 @@
-streamlit
-pubchempy
-rdkit
-pandas
-google-genai
