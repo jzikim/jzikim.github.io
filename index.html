@@ -59,6 +59,64 @@
       scroll-behavior: smooth;
     }
 
+    html[lang="ko"] {
+      word-break: keep-all;
+    }
+
+    html[lang="ko"] h2 {
+      letter-spacing: -0.02em;
+    }
+
+    html[lang="ko"] .eyebrow {
+      letter-spacing: 0.01em;
+    }
+
+    html[lang="ko"] .timeline-org,
+    html[lang="ko"] .card-header,
+    html[lang="ko"] .card-type,
+    html[lang="ko"] .card-date,
+    html[lang="ko"] .tag,
+    html[lang="ko"] .project-details-button,
+    html[lang="ko"] .skill-column h3,
+    html[lang="ko"] .award-source {
+      letter-spacing: 0;
+      font-family: var(--sans);
+    }
+
+    html[lang="ko"] .timeline-item {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    html[lang="ko"] .award-date {
+      position: static;
+      display: block;
+      margin-bottom: 8px;
+      text-align: left;
+    }
+
+    html[lang="ko"] .award > div:last-child {
+      padding-right: 0;
+    }
+
+    html[lang="ko"] .section-heading {
+      margin-bottom: 24px;
+    }
+
+    html[lang="ko"] .timeline-item {
+      padding: 30px 0;
+    }
+
+    html[lang="ko"] .timeline-date,
+    html[lang="ko"] .award-date {
+      font-family: var(--sans);
+      letter-spacing: 0;
+    }
+
+    html[lang="ko"] .card-header {
+      text-transform: none;
+    }
+
     [hidden] {
       display: none !important;
     }
@@ -197,7 +255,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 92px 0 72px;
+      padding: 72px 0 50px;
       text-align: center;
     }
 
@@ -206,7 +264,7 @@
     }
 
     .eyebrow {
-      margin: 0 0 22px;
+      margin: 0 0 16px;
       color: var(--accent);
       font-family: var(--mono);
       font-size: 0.78rem;
@@ -225,18 +283,19 @@
     }
 
     .hero-summary {
-      max-width: 720px;
+      max-width: 650px;
       margin: 28px auto 0;
       color: var(--muted);
-      font-size: clamp(1.03rem, 1.7vw, 1.22rem);
+      font-size: clamp(0.93rem, 1.53vw, 1.1rem);
       font-weight: 400;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 12px;
-      margin-top: 34px;
+      margin-top: 28px;
     }
 
     section {
@@ -274,13 +333,11 @@
 
     .hero-copy {
       display: grid;
-      gap: 14px;
-      margin-top: 26px;
+      gap: 11px;
+      max-width: 640px;
+      margin: 22px auto 0;
       color: #34413c;
-      font-size: 1rem;
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: 0.88rem;
     }
 
     .hero-copy p {
@@ -336,6 +393,9 @@
 
     .timeline {
       display: grid;
+    }
+
+    #experience .timeline {
       border-top: 1px solid var(--border);
     }
 
@@ -445,28 +505,141 @@
       font-size: 0.95rem;
     }
 
-    .card details {
-      margin-top: 16px;
-      color: var(--muted);
-      font-size: 0.92rem;
+    .project-details-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--accent);
+      cursor: pointer;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
-    .card summary {
+    .project-details-button:hover {
+      color: var(--accent-strong);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .project-dialog {
+      width: min(720px, calc(100% - 28px));
+      max-width: none;
+      max-height: min(86vh, 900px);
+      padding: 0;
+      overflow: visible;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: var(--shadow);
+    }
+
+    .project-dialog::backdrop {
+      background: rgba(18, 29, 25, 0.58);
+      backdrop-filter: blur(4px);
+    }
+
+    .project-dialog-inner {
+      position: relative;
+      max-height: min(86vh, 900px);
+      padding: clamp(24px, 5vw, 44px);
+      overflow-y: auto;
+    }
+
+    .project-dialog-close {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: var(--surface);
+      color: var(--muted);
       cursor: pointer;
-      color: var(--accent);
+      font-size: 1.4rem;
+    }
+
+    .project-dialog-type {
+      margin: 0 48px 12px 0;
+      color: var(--gold);
       font-family: var(--mono);
       font-size: 0.72rem;
-      font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .card summary::marker {
-      color: var(--accent);
+    .project-dialog-date {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.76rem;
     }
 
-    .card details p {
-      margin-top: 10px;
+    .project-dialog h2 {
+      margin-right: 36px;
+      font-size: clamp(1.7rem, 5vw, 2.5rem);
+    }
+
+    .project-dialog-overview {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .project-dialog-section {
+      margin-top: 26px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+    }
+
+    .project-dialog-section h3 {
+      margin: 0;
+      color: var(--accent-strong);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .project-dialog-list {
+      display: grid;
+      gap: 12px;
+      margin: 14px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .project-dialog-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .project-dialog-actions button {
+      cursor: pointer;
+    }
+
+    .project-dialog:focus {
+      outline: none;
+    }
+
+    .project-dialog a:focus-visible,
+    .project-dialog button:focus-visible,
+    .project-details-button:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
     }
 
     .skills-grid {
@@ -516,7 +689,6 @@
 
     .awards-list {
       display: grid;
-      border-top: 1px solid var(--border);
     }
 
     .award {
@@ -734,6 +906,7 @@
       </a>
       <ul class="nav-links" aria-label="Primary navigation">
         <li><a href="#experience">Experience</a></li>
+        <li><a href="#activities">Activities</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#awards">Honors</a></li>
@@ -752,18 +925,19 @@
         <p class="eyebrow">Data Science + Economics / UW–Madison</p>
         <h1>Joonghyuk Kim</h1>
         <p class="hero-summary">
-          I study Data Science and Economics at UW–Madison, with interests in analytics,
-          finance, and business operations.
+          I study Data Science and Economics at UW–Madison, exploring the intersection of analytics, finance, and business strategy.
         </p>
         <div class="hero-copy">
           <p>
-            My experience spans military leadership, e-commerce merchandising, operations,
-            teaching support, and student-led investment research.
+            My experience spans business operations, financial analysis, marketplace growth, and healthcare AI market research.
           </p>
           <p>
-            I enjoy using data to understand people, markets, and business decisions, and
-            turning that understanding into practical action.
+            I enjoy turning complex data and market insights into practical strategies that drive meaningful business decisions.
           </p>
+        </div>
+        <div class="hero-actions">
+          <a class="button" href="#projects">Explore My Work <span aria-hidden="true">↗</span></a>
+          <a class="button secondary" href="#contact">Get in Touch</a>
         </div>
       </div>
 
@@ -773,24 +947,41 @@
       <div class="shell">
         <div class="section-heading">
           <div>
-            <h2>Experience</h2>
+            <h2>Work Experience</h2>
           </div>
         </div>
 
         <div class="timeline">
           <article class="timeline-item">
-            <div class="timeline-date">May 2026 - Present</div>
+            <div class="timeline-date">Oct 2026 - Present</div>
             <div>
-              <h3 class="timeline-title">Operations Assistant</h3>
-              <p class="timeline-org">Design J</p>
+              <h3 class="timeline-title">Marketing &amp; Strategy Intern</h3>
+              <p class="timeline-org">Mod AI | Boston, MA (Hybrid)</p>
               <ul class="timeline-list">
-                <li>Supported commercial furniture operations, including distribution coordination, on-site installation, and client-facing project support.</li>
-                <li>Assisted B2B partnership development through proposal preparation, platform research, and business communication support.</li>
+                <li>Analyze U.S. market trends, competitors, and organic growth strategies for FeverCoach, an AI-powered healthcare app.</li>
+                <li>Research parenting influencers and digital communities to develop outreach strategies and drive paid subscriptions.</li>
               </ul>
               <div class="tag-row">
-                <span class="tag">Operations</span>
-                <span class="tag">B2B Projects</span>
-                <span class="tag">Proposal Support</span>
+                <span class="tag">Market Research</span>
+                <span class="tag">Growth Strategy</span>
+                <span class="tag">Healthcare AI</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">May 2026 - Aug 2026</div>
+            <div>
+              <h3 class="timeline-title">Business Operations Assistant</h3>
+              <p class="timeline-org">Design J | Seoul, Korea</p>
+              <ul class="timeline-list">
+                <li>Structured B2B billing and financial reconciliation workflows for enterprise client COMPOSE COFFEE.</li>
+                <li>Built Excel-based inventory tracking models to improve order fulfillment and strengthen inventory visibility.</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag">Business Operations</span>
+                <span class="tag">Financial Reconciliation</span>
+                <span class="tag">Excel Modeling</span>
               </div>
             </div>
           </article>
@@ -798,17 +989,63 @@
           <article class="timeline-item">
             <div class="timeline-date">Jul 2025 - Dec 2025</div>
             <div>
-              <h3 class="timeline-title">E-commerce Merchandiser</h3>
-              <p class="timeline-org">Barunhome Corp.</p>
+              <h3 class="timeline-title">Operations &amp; Finance Associate</h3>
+              <p class="timeline-org">Barunhome Corp. | Seoul, Korea</p>
               <ul class="timeline-list">
-                <li>Expanded marketplace revenue by onboarding new sales channels, coordinating platform promotions, and managing product-level sales operations.</li>
-                <li>Supported end-to-end furniture commerce operations across overseas supplier communication, customs clearance, inventory control, and logistics coordination.</li>
+                <li>Sourced and launched a new marketplace channel, leading platform outreach and onboarding to generate new revenue.</li>
+                <li>Analyzed pricing, unit economics, and gross margins to support marketplace launch decisions and sales performance.</li>
               </ul>
               <div class="tag-row">
-                <span class="tag">E-commerce</span>
                 <span class="tag">Marketplace Growth</span>
-                <span class="tag">Import & Customs</span>
-                <span class="tag">Logistics</span>
+                <span class="tag">Financial Analysis</span>
+                <span class="tag">Revenue Strategy</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="activities">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <h2>Leadership &amp; Activities</h2>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-date">Jan 2026 - May 2026</div>
+            <div>
+              <h3 class="timeline-title">Corporate Valuation &amp; Equity Investment Team</h3>
+              <p class="timeline-org">Korean Business Student Association</p>
+              <ul class="timeline-list">
+                <li>Evaluated 5+ equities using DCF, comparable-company, and three-statement models to develop weekly investment theses.</li>
+                <li>Formulated fintech turnaround proposals combining transaction anomaly detection and risk segmentation.</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag">Equity Research</span>
+                <span class="tag">Financial Modeling</span>
+                <span class="tag">Risk Analysis</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">May 2026 - Present</div>
+            <div>
+              <h3 class="timeline-title">Sponsorship &amp; Marketing</h3>
+              <p class="timeline-org">Korean Undergraduate Student Association</p>
+              <ul class="timeline-list">
+                <li>Coordinated corporate onboarding partnerships with Chase and AT&amp;T to support incoming students.</li>
+                <li>Managed event structure, partner logistics, and multi-channel communications across stakeholders.</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag">Partnerships</span>
+                <span class="tag">Event Operations</span>
+                <span class="tag">Marketing</span>
               </div>
             </div>
           </article>
@@ -816,49 +1053,16 @@
           <article class="timeline-item">
             <div class="timeline-date">Dec 2023 - Jun 2025</div>
             <div>
-              <h3 class="timeline-title">Sergeant, Republic of Korea Army</h3>
-              <p class="timeline-org">11th Infantry Brigade</p>
+              <h3 class="timeline-title">Squad Leader, Frontline Guard Forces, 1st Infantry Division</h3>
+              <p class="timeline-org">Republic of Korea Army</p>
               <ul class="timeline-list">
-                <li>Completed mandatory military service as a sergeant with frontline training, security operations, and team-based field coordination experience.</li>
-                <li>Earned multiple commendations for performance, discipline, and operational contribution in a high-pressure military environment.</li>
+                <li>Led crisis protocols during the 2024 border provocation, contributing to three Military Merit Citations for leadership.</li>
+                <li>Commanded a frontline squad in 24/7 DMZ surveillance operations, maintaining combat readiness and unit discipline.</li>
               </ul>
               <div class="tag-row">
                 <span class="tag">Leadership</span>
-                <span class="tag">Discipline</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-date">Jun 2023 - Dec 2023</div>
-            <div>
-              <h3 class="timeline-title">Teaching Assistant</h3>
-              <p class="timeline-org">Ian's English Academy</p>
-              <ul class="timeline-list">
-                <li>Supported Grade 9-10 students through individualized mentoring and academic progress tracking.</li>
-                <li>Streamlined class logistics and grading workflows to improve daily instructional efficiency.</li>
-              </ul>
-              <div class="tag-row">
-                <span class="tag">Mentoring</span>
-                <span class="tag">Education</span>
-                <span class="tag">Communication</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-date">Jan 2023 - Apr 2023</div>
-            <div>
-              <h3 class="timeline-title">Student Cook & Receptionist</h3>
-              <p class="timeline-org">MSU Culinary Service</p>
-              <ul class="timeline-list">
-                <li>Managed POS transactions and end-of-day financial reconciliation at Sparty Market.</li>
-                <li>Supported inventory restocking and prep workflows during peak campus hours.</li>
-              </ul>
-              <div class="tag-row">
+                <span class="tag">Crisis Response</span>
                 <span class="tag">Operations</span>
-                <span class="tag">POS</span>
-                <span class="tag">Reconciliation</span>
               </div>
             </div>
           </article>
@@ -878,20 +1082,13 @@
           <article class="card">
             <div class="card-header">
               <span class="card-type">Healthcare AI</span>
-              <time class="card-date">May 2026 - Present</time>
+              <time class="card-date">May 2026 - Aug 2026</time>
             </div>
             <h3>HERO Wearable Emergency Monitoring App</h3>
             <p>
               Built a wearable-based emergency monitoring concept for older adults in rural areas.
             </p>
-            <details>
-              <summary>Details</summary>
-              <p>
-                Connected Galaxy Fit health signals, anomaly detection logic, AI voice calls, location data, and
-                emergency escalation workflows through Health Connect, Supabase, Twilio, Claude, Kakao Map, and
-                weather APIs.
-              </p>
-            </details>
+            <button class="project-details-button" type="button" data-project="hero" aria-haspopup="dialog" aria-controls="project-dialog">View details <span aria-hidden="true">↗</span></button>
             <div class="tag-row">
               <span class="tag">API Integration</span>
               <span class="tag">Health Connect</span>
@@ -902,19 +1099,13 @@
           <article class="card">
             <div class="card-header">
               <span class="card-type">Research Mentoring</span>
-              <time class="card-date">May 2026 - Present</time>
+              <time class="card-date">May 2026 - Sep 2026</time>
             </div>
             <h3>JHHS STEM Research Mentoring</h3>
             <p>
               Mentored a high school team on an RDKit-based molecular solubility project.
             </p>
-            <details>
-              <summary>Details</summary>
-              <p>
-                Guided project scoping, descriptor-based data structuring, workflow design, and model evaluation for
-                an AI and chemistry research initiative.
-              </p>
-            </details>
+            <button class="project-details-button" type="button" data-project="jhhs" aria-haspopup="dialog" aria-controls="project-dialog">View details <span aria-hidden="true">↗</span></button>
             <div class="tag-row">
               <span class="tag">Python</span>
               <span class="tag">RDKit</span>
@@ -924,43 +1115,31 @@
 
           <article class="card">
             <div class="card-header">
-              <span class="card-type">Data Analysis</span>
-              <time class="card-date">Mar 2026 - Apr 2026</time>
+              <span class="card-type">Robotics &amp; AI</span>
+              <time class="card-date">Sep 2026 - Present</time>
             </div>
-            <h3>Student Performance & Sleep Analysis</h3>
+            <h3>VLA-Based Robotics Project</h3>
             <p>
-              Analyzed how sleep duration and attendance relate to GPA across 10,000 records.
+              Developed go-to-market strategies for a vision-language-action robotics project with Like Lion at UW–Madison.
             </p>
-            <details>
-              <summary>Details</summary>
-              <p>
-                Used R to clean the dataset, compare student groups, and interpret statistical patterns in academic
-                performance.
-              </p>
-            </details>
+            <button class="project-details-button" type="button" data-project="vla" aria-haspopup="dialog" aria-controls="project-dialog">View details <span aria-hidden="true">↗</span></button>
             <div class="tag-row">
-              <span class="tag">R</span>
-              <span class="tag">Statistics</span>
-              <span class="tag">RStudio</span>
+              <span class="tag">VLA Robotics</span>
+              <span class="tag">Go-to-Market Strategy</span>
+              <span class="tag">Partnerships</span>
             </div>
           </article>
 
           <article class="card">
             <div class="card-header">
               <span class="card-type">Finance Strategy</span>
-              <time class="card-date">Jan 2026 - Present</time>
+              <time class="card-date">Jan 2026 - May 2026</time>
             </div>
             <h3>Fintech Turnaround Proposal</h3>
             <p>
               Developed a turnaround strategy for a distressed fintech firm.
             </p>
-            <details>
-              <summary>Details</summary>
-              <p>
-                Analyzed risk segments, fraud exposure, valuation assumptions, and operational KPIs to shape a
-                recovery strategy and investment-style recommendation.
-              </p>
-            </details>
+            <button class="project-details-button" type="button" data-project="fintech" aria-haspopup="dialog" aria-controls="project-dialog">View details <span aria-hidden="true">↗</span></button>
             <div class="tag-row">
               <span class="tag">Fintech</span>
               <span class="tag">Risk</span>
@@ -968,9 +1147,49 @@
             </div>
           </article>
 
+          <article class="card">
+            <div class="card-header">
+              <span class="card-type">Automation</span>
+              <time class="card-date">Aug 2026 - Present</time>
+            </div>
+            <h3>Global Internship Hunter</h3>
+            <p>
+              Built a Python pipeline that collects and filters global internship opportunities and sends daily updates.
+            </p>
+            <button class="project-details-button" type="button" data-project="internship-hunter" aria-haspopup="dialog" aria-controls="project-dialog">View details <span aria-hidden="true">↗</span></button>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">GitHub Actions</span>
+              <span class="tag">Discord Webhooks</span>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
+
+    <dialog class="project-dialog" id="project-dialog" aria-labelledby="project-dialog-title">
+      <div class="project-dialog-inner">
+        <button class="project-dialog-close" type="button" aria-label="Close project details">×</button>
+        <p class="project-dialog-type" id="project-dialog-type"></p>
+        <time class="project-dialog-date" id="project-dialog-date"></time>
+        <h2 id="project-dialog-title"></h2>
+        <p class="project-dialog-overview" id="project-dialog-overview"></p>
+        <section class="project-dialog-section" aria-labelledby="project-dialog-contributions-label">
+          <h3 id="project-dialog-contributions-label">What I did</h3>
+          <ul class="project-dialog-list" id="project-dialog-contributions"></ul>
+        </section>
+        <section class="project-dialog-section" aria-labelledby="project-dialog-tools-label">
+          <h3 id="project-dialog-tools-label">Tools &amp; technologies</h3>
+          <div class="tag-row" id="project-dialog-tools"></div>
+        </section>
+        <div class="project-dialog-actions">
+          <a class="button" id="project-dialog-github" href="#" target="_blank" rel="noreferrer" hidden>View on GitHub</a>
+          <button class="button secondary project-dialog-close-action" type="button">Close</button>
+        </div>
+      </div>
+    </dialog>
 
     <section id="skills">
       <div class="shell">
@@ -1106,102 +1325,115 @@
 
     const koreanText = {
       ".brand span:last-child": "김중혁",
-      ".nav-links li:nth-child(1) a": "Experience",
-      ".nav-links li:nth-child(2) a": "Projects",
-      ".nav-links li:nth-child(3) a": "Skills",
-      ".nav-links li:nth-child(4) a": "Honors",
-      ".nav-links li:nth-child(5) a": "Contact",
-      ".nav-action": "Resume",
-      ".eyebrow": "Data Science + Economics / UW–Madison",
+      ".nav-links li:nth-child(1) a": "경력",
+      ".nav-links li:nth-child(2) a": "활동",
+      ".nav-links li:nth-child(3) a": "프로젝트",
+      ".nav-links li:nth-child(4) a": "기술",
+      ".nav-links li:nth-child(5) a": "수상",
+      ".nav-links li:nth-child(6) a": "연락처",
+      ".nav-action": "이력서",
+      ".eyebrow": "데이터 사이언스 + 경제학 / UW–Madison",
       "h1": "Joonghyuk Kim",
-      ".hero-summary": "UW–Madison에서 Data Science와 Economics를 공부하며,\n데이터 분석과 비즈니스 실무를 연결하는 경험을 쌓고 있습니다.",
-      ".hero-copy p:nth-child(1)": "",
-      ".hero-copy p:nth-child(2)": "",
-      "#experience h2": "Experience",
-      ".timeline-item:nth-child(1) .timeline-date": "May 2026 – Present",
-      ".timeline-item:nth-child(1) .timeline-title": "프로젝트 운영 지원 인턴",
-      ".timeline-item:nth-child(1) .timeline-org": "주)디자인제이",
-      ".timeline-item:nth-child(1) .timeline-list li:nth-child(1)": "상업 공간 가구 납품 프로젝트 배송 조율, 현장 설치 지원, 고객사 커뮤니케이션 등 운영 전반 보조",
-      ".timeline-item:nth-child(1) .timeline-list li:nth-child(2)": "B2B 제안서 작성, 플랫폼 리서치, 파트너사 커뮤니케이션을 통한 신규 납품 기회 발굴 지원",
-      ".timeline-item:nth-child(1) .tag:nth-child(1)": "운영",
-      ".timeline-item:nth-child(1) .tag:nth-child(2)": "B2B 프로젝트",
-      ".timeline-item:nth-child(1) .tag:nth-child(3)": "제안서 지원",
-      ".timeline-item:nth-child(2) .timeline-date": "Jul 2025 – Dec 2025",
-      ".timeline-item:nth-child(2) .timeline-title": "이커머스 MD",
-      ".timeline-item:nth-child(2) .timeline-org": "주)바른홈",
-      ".timeline-item:nth-child(2) .timeline-list li:nth-child(1)": "신규 판매 채널 입점, 플랫폼 프로모션 운영, 상품 단위 판매 관리를 통한 온라인 마켓플레이스 매출 확대 기여",
-      ".timeline-item:nth-child(2) .timeline-list li:nth-child(2)": "해외 공급처 커뮤니케이션, 수입 통관, 재고 관리, 물류 조율 등 가구 이커머스 운영 전반 담당",
-      ".timeline-item:nth-child(2) .tag:nth-child(1)": "E커머스",
-      ".timeline-item:nth-child(2) .tag:nth-child(2)": "마켓플레이스 운영",
-      ".timeline-item:nth-child(2) .tag:nth-child(3)": "수입 및 물류",
-      ".timeline-item:nth-child(2) .tag:nth-child(4)": "공급",
-      ".timeline-item:nth-child(3) .timeline-date": "Dec 2023 – Jun 2025",
-      ".timeline-item:nth-child(3) .timeline-title": "Sergeant, Republic of Korea Army",
-      ".timeline-item:nth-child(3) .timeline-org": "제11보병여단",
-      ".timeline-item:nth-child(3) .timeline-list li:nth-child(1)": "대한민국 육군 전방부대 병장 복무, 경계 작전, 팀 단위 임무 수행, 현장 상황 대응",
-      ".timeline-item:nth-child(3) .timeline-list li:nth-child(2)": "강도 높은 작전 환경에서 안정적인 임무 수행 및 팀 기여도로 다수 표창 수상",
-      ".timeline-item:nth-child(3) .tag:nth-child(1)": "리더십",
-      ".timeline-item:nth-child(3) .tag:nth-child(2)": "조직 기여",
-      ".timeline-item:nth-child(4) .timeline-date": "Jun 2023 – Dec 2023",
-      ".timeline-item:nth-child(4) .timeline-title": "학원 조교",
-      ".timeline-item:nth-child(4) .timeline-org": "이안의학원",
-      ".timeline-item:nth-child(4) .timeline-list li:nth-child(1)": "9–10학년 대상 영어 수업 보조, 개별 피드백, 학습 관리 지원",
-      ".timeline-item:nth-child(4) .timeline-list li:nth-child(2)": "수업 준비, 과제 확인, 채점 보조 등 일일 수업 운영 보조",
-      ".timeline-item:nth-child(4) .tag:nth-child(1)": "멘토링",
-      ".timeline-item:nth-child(4) .tag:nth-child(2)": "교육",
-      ".timeline-item:nth-child(4) .tag:nth-child(3)": "커뮤니케이션",
-      ".timeline-item:nth-child(5) .timeline-date": "Jan 2023 – Apr 2023",
-      ".timeline-item:nth-child(5) .timeline-title": "Student Cook & Receptionist",
-      ".timeline-item:nth-child(5) .timeline-org": "MSU CULINARY SERVICE",
-      ".timeline-item:nth-child(5) .timeline-list li:nth-child(1)": "Sparty Market POS 결제, 마감 정산, 고객 응대 업무 담당",
-      ".timeline-item:nth-child(5) .timeline-list li:nth-child(2)": "피크 시간대 재고 보충, 식음료 준비 지원 및 현장 운영 보조",
-      ".timeline-item:nth-child(5) .tag:nth-child(1)": "운영",
-      ".timeline-item:nth-child(5) .tag:nth-child(2)": "POS",
-      ".timeline-item:nth-child(5) .tag:nth-child(3)": "접객",
-      "#projects h2": "Projects",
+      ".hero-summary": "UW–Madison에서 데이터 사이언스와 경제학을 공부하며, 분석·금융·비즈니스 전략의 접점을 탐구하고 있습니다.",
+      ".hero-copy p:nth-child(1)": "비즈니스 운영, 재무 분석, 마켓플레이스 성장, 헬스케어 AI 시장 조사 경험을 쌓았습니다.",
+      ".hero-copy p:nth-child(2)": "복잡한 데이터와 시장 인사이트를 실질적인 전략으로 바꾸어 의미 있는 비즈니스 의사결정을 이끄는 일에 관심이 있습니다.",
+      ".hero-actions a:nth-child(1)": "프로젝트 살펴보기 ↗",
+      ".hero-actions a:nth-child(2)": "연락하기",
+      "#experience h2": "직장 경력",
+      "#experience .timeline-item:nth-child(1) .timeline-date": "2026년 10월 – 현재",
+      ".timeline-item:nth-child(1) .timeline-title": "마케팅 및 전략 인턴",
+      ".timeline-item:nth-child(1) .timeline-list li:nth-child(1)": "AI 헬스케어 앱 FeverCoach의 미국 시장 동향, 경쟁사, 자연 유입 성장 전략 분석",
+      ".timeline-item:nth-child(1) .timeline-list li:nth-child(2)": "유료 구독 확대를 위한 육아 인플루언서 및 디지털 커뮤니티 리서치와 고객 접점 전략 수립",
+      ".timeline-item:nth-child(1) .tag:nth-child(1)": "시장 조사",
+      ".timeline-item:nth-child(1) .tag:nth-child(2)": "성장 전략",
+      ".timeline-item:nth-child(1) .tag:nth-child(3)": "헬스케어 AI",
+      "#experience .timeline-item:nth-child(2) .timeline-date": "2026년 5월 – 8월",
+      ".timeline-item:nth-child(2) .timeline-title": "비즈니스 운영 어시스턴트",
+      ".timeline-item:nth-child(2) .timeline-list li:nth-child(1)": "기업 고객 COMPOSE COFFEE의 B2B 청구 및 재무 대사 업무 프로세스 체계화",
+      ".timeline-item:nth-child(2) .timeline-list li:nth-child(2)": "주문 이행 개선과 재고 가시성 강화를 위한 Excel 기반 재고 추적 모델 구축",
+      ".timeline-item:nth-child(2) .tag:nth-child(1)": "사업 운영",
+      ".timeline-item:nth-child(2) .tag:nth-child(2)": "재무 대사",
+      ".timeline-item:nth-child(2) .tag:nth-child(3)": "Excel 모델링",
+      "#experience .timeline-item:nth-child(3) .timeline-date": "2025년 7월 – 12월",
+      ".timeline-item:nth-child(3) .timeline-title": "운영 및 재무 어소시에이트",
+      ".timeline-item:nth-child(3) .timeline-list li:nth-child(1)": "신규 마켓플레이스 채널 발굴과 입점을 주도해 신규 매출 기회 창출",
+      ".timeline-item:nth-child(3) .timeline-list li:nth-child(2)": "마켓플레이스 입점 의사결정과 판매 성과 분석을 위해 가격, 단위 경제성, 매출총이익률 분석",
+      ".timeline-item:nth-child(3) .tag:nth-child(1)": "마켓플레이스 성장",
+      ".timeline-item:nth-child(3) .tag:nth-child(2)": "재무 분석",
+      ".timeline-item:nth-child(3) .tag:nth-child(3)": "매출 전략",
+      "#activities h2": "동아리 및 리더십 활동",
+      "#activities .timeline-item:nth-child(1) .timeline-date": "2026년 1월 – 5월",
+      "#activities .timeline-item:nth-child(1) .timeline-title": "기업 가치 평가 및 주식 투자팀",
+      "#activities .timeline-item:nth-child(1) .timeline-org": "한국 비즈니스 학생회",
+      "#activities .timeline-item:nth-child(1) .timeline-list li:nth-child(1)": "DCF, 유사기업 비교, 3개 재무제표 모델을 활용해 5개 이상 기업을 평가하고 주간 투자 논지 작성",
+      "#activities .timeline-item:nth-child(1) .timeline-list li:nth-child(2)": "거래 이상 탐지와 리스크 세분화를 결합한 핀테크 기업 회복 전략 제안",
+      "#activities .timeline-item:nth-child(1) .tag:nth-child(1)": "주식 리서치",
+      "#activities .timeline-item:nth-child(1) .tag:nth-child(2)": "재무 모델링",
+      "#activities .timeline-item:nth-child(1) .tag:nth-child(3)": "리스크 분석",
+      "#activities .timeline-item:nth-child(2) .timeline-date": "2026년 5월 – 현재",
+      "#activities .timeline-item:nth-child(2) .timeline-title": "스폰서십 및 마케팅",
+      "#activities .timeline-item:nth-child(2) .timeline-org": "한국 학부생 학생회",
+      "#activities .timeline-item:nth-child(2) .timeline-list li:nth-child(1)": "신입생 지원을 위해 Chase 및 AT&T와 기업 파트너십 온보딩 조율",
+      "#activities .timeline-item:nth-child(2) .timeline-list li:nth-child(2)": "이해관계자 대상 행사 구성, 파트너 운영, 다채널 커뮤니케이션 관리",
+      "#activities .timeline-item:nth-child(2) .tag:nth-child(1)": "파트너십",
+      "#activities .timeline-item:nth-child(2) .tag:nth-child(2)": "행사 운영",
+      "#activities .timeline-item:nth-child(2) .tag:nth-child(3)": "마케팅",
+      "#activities .timeline-item:nth-child(3) .timeline-date": "2023년 12월 – 2025년 6월",
+      "#activities .timeline-item:nth-child(3) .timeline-title": "분대장, 제1보병사단 전방 경계부대",
+      "#activities .timeline-item:nth-child(3) .timeline-org": "대한민국 육군",
+      "#activities .timeline-item:nth-child(3) .timeline-list li:nth-child(1)": "2024년 접경지역 도발 상황에서 위기 대응 절차를 이끌어 리더십 관련 군 공로 표창 3회 수상에 기여",
+      "#activities .timeline-item:nth-child(3) .timeline-list li:nth-child(2)": "전방 분대의 24시간 비무장지대 감시 작전을 지휘하며 전투 준비태세와 부대 기강 유지",
+      "#activities .timeline-item:nth-child(3) .tag:nth-child(1)": "리더십",
+      "#activities .timeline-item:nth-child(3) .tag:nth-child(2)": "위기 대응",
+      "#activities .timeline-item:nth-child(3) .tag:nth-child(3)": "작전",
+      "#projects h2": "프로젝트",
       ".card:nth-child(1) .card-type": "헬스케어 AI",
-      ".card:nth-child(1) .card-date": "May 2026 – Present",
+      ".card:nth-child(1) .card-date": "2026년 5월 – 8월",
       ".card:nth-child(1) h3": "HERO 웨어러블 응급 모니터링 앱",
       ".card:nth-child(1) > p": "농촌 지역 고령자를 위한 웨어러블 기반 응급 모니터링 앱 콘셉트 기획",
-      ".card:nth-child(1) summary": "상세",
-      ".card:nth-child(1) details p": "Galaxy Fit 건강 데이터, 이상 징후 감지 로직, AI 음성 통화, 위치 정보, 응급 신고 흐름을 Health Connect, Supabase, Twilio, Claude, Kakao Map API, 날씨 API와 연결해 서비스 구조 설계",
+      ".card:nth-child(1) .project-details-button": "자세히 보기 ↗",
       ".card:nth-child(1) .tag:nth-child(1)": "API 연동",
       ".card:nth-child(1) .tag:nth-child(3)": "Claude API",
       ".card:nth-child(2) .card-type": "리서치 멘토링",
-      ".card:nth-child(2) .card-date": "May 2026 – Present",
+      ".card:nth-child(2) .card-date": "2026년 5월 – 9월",
       ".card:nth-child(2) h3": "JHHS STEM 리서치 멘토링",
       ".card:nth-child(2) > p": "고등학생 팀의 RDKit 기반 분자 용해도 분석 프로젝트 멘토링",
-      ".card:nth-child(2) summary": "상세",
-      ".card:nth-child(2) details p": "프로젝트 주제 설정, 분자 descriptor 기반 데이터 구조화, 분석 흐름 설계, 모델 평가 방향 수립 지원",
+      ".card:nth-child(2) .project-details-button": "자세히 보기 ↗",
       ".card:nth-child(2) .tag:nth-child(3)": "멘토링",
-      ".card:nth-child(3) .card-type": "데이터 분석",
-      ".card:nth-child(3) .card-date": "Mar 2026 – Apr 2026",
-      ".card:nth-child(3) h3": "학생 성과 및 수면 분석",
-      ".card:nth-child(3) > p": "학생 10,000명 데이터를 바탕으로 수면 시간, 출석률, GPA 간 관계 분석",
-      ".card:nth-child(3) summary": "상세",
-      ".card:nth-child(3) details p": "R 기반 데이터 정제, 학생 그룹별 차이 비교, 학업 성과 관련 통계적 패턴 해석",
-      ".card:nth-child(3) .tag:nth-child(2)": "통계",
+      ".card:nth-child(3) .card-type": "로보틱스 및 AI",
+      ".card:nth-child(3) .card-date": "2026년 9월 – 현재",
+      ".card:nth-child(3) h3": "VLA 기반 로보틱스 프로젝트",
+      ".card:nth-child(3) > p": "UW–Madison Like Lion과 함께 VLA 로보틱스 프로젝트의 시장 진출 전략 수립",
+      ".card:nth-child(3) .project-details-button": "자세히 보기 ↗",
+      ".card:nth-child(3) .tag:nth-child(1)": "VLA 로보틱스",
+      ".card:nth-child(3) .tag:nth-child(2)": "시장 진출 전략",
+      ".card:nth-child(3) .tag:nth-child(3)": "파트너십",
       ".card:nth-child(4) .card-type": "금융 전략",
-      ".card:nth-child(4) .card-date": "Jan 2026 – Present",
+      ".card:nth-child(4) .card-date": "2026년 1월 – 5월",
       ".card:nth-child(4) h3": "핀테크 기업 분석 발표",
       ".card:nth-child(4) > p": "재무적·운영적 어려움을 겪는 핀테크 기업 대상 전략 제안",
-      ".card:nth-child(4) summary": "상세",
-      ".card:nth-child(4) details p": "고객 리스크 세그먼트, fraud exposure, 밸류에이션 가정, 운영 KPI 분석을 통한 회복 전략 및 투자 관점 제안 도출",
+      ".card:nth-child(4) .project-details-button": "자세히 보기 ↗",
       ".card:nth-child(4) .tag:nth-child(2)": "리스크",
       ".card:nth-child(4) .tag:nth-child(3)": "밸류에이션",
-      "#skills h2": "Skills",
-      ".skill-column:nth-child(1) h3": "Data & Analytics",
-      ".skill-column:nth-child(1) li:nth-child(3)": "Statistical Analysis",
-      ".skill-column:nth-child(1) li:nth-child(4)": "Data Visualization",
-      ".skill-column:nth-child(1) li:nth-child(5)": "Excel Modeling",
-      ".skill-column:nth-child(2) h3": "Programming",
-      ".skill-column:nth-child(3) h3": "Business Operations",
-      ".skill-column:nth-child(3) li:nth-child(1)": "Marketplace Operations",
-      ".skill-column:nth-child(3) li:nth-child(2)": "Inventory & Logistics",
-      ".skill-column:nth-child(3) li:nth-child(3)": "Import & Customs",
-      ".skill-column:nth-child(3) li:nth-child(4)": "Sales Performance Tracking",
-      ".skill-column:nth-child(4) h3": "Platforms & APIs",
-      ".skill-column:nth-child(4) li:nth-child(2)": "API Integration",
+      ".card:nth-child(5) .card-type": "자동화",
+      ".card:nth-child(5) .card-date": "2026년 8월 – 현재",
+      ".card:nth-child(5) h3": "글로벌 인턴십 헌터",
+      ".card:nth-child(5) > p": "전 세계 인턴십 공고를 수집·분류하고 매일 업데이트를 전달하는 Python 파이프라인 구축",
+      ".card:nth-child(5) .project-details-button": "자세히 보기 ↗",
+      ".card:nth-child(5) .tag:nth-child(4)": "Discord Webhook",
+      "#skills h2": "기술",
+      ".skill-column:nth-child(1) h3": "데이터 분석",
+      ".skill-column:nth-child(1) li:nth-child(3)": "통계 분석",
+      ".skill-column:nth-child(1) li:nth-child(4)": "데이터 시각화",
+      ".skill-column:nth-child(1) li:nth-child(5)": "Excel 모델링",
+      ".skill-column:nth-child(2) h3": "프로그래밍",
+      ".skill-column:nth-child(3) h3": "비즈니스 운영",
+      ".skill-column:nth-child(3) li:nth-child(1)": "마켓플레이스 운영",
+      ".skill-column:nth-child(3) li:nth-child(2)": "재고 및 물류",
+      ".skill-column:nth-child(3) li:nth-child(3)": "수입 및 통관",
+      ".skill-column:nth-child(3) li:nth-child(4)": "판매 실적 관리",
+      ".skill-column:nth-child(4) h3": "플랫폼 및 API",
+      ".skill-column:nth-child(4) li:nth-child(2)": "API 연동",
       ".certificate-list .tag:nth-child(1)": "Google AI Essentials",
       ".certificate-list .tag:nth-child(2)": "Google Advanced Data Analytics",
       ".certificate-list .tag:nth-child(3)": "Mastercard Advisors & Consulting Services Simulation",
@@ -1213,20 +1445,191 @@
       ".award:nth-child(2) .award-date": "2025년 1월 18일 / 2024년 10월 26일",
       ".award:nth-child(2) strong": "GOP 경계작전 유공 2회",
       ".award:nth-child(2) .award-source": "대한민국 육군 제11보병여단",
-      ".award:nth-child(3) .award-date": "2022 Fall & 2023 Spring",
+      ".award:nth-child(3) .award-date": "2022년 가을학기 & 2023년 봄학기",
       ".award:nth-child(3) strong": "Dean's List",
       ".award:nth-child(4) .award-date": "2022년 1월 14일",
       ".award:nth-child(4) strong": "Global Ambassador Grant",
-      "#contact h2": "Contact",
-      ".contact-link:nth-child(1) span": "Email",
-      ".footer-inner span:nth-child(2)": "Data Science & Economics / UW–Madison"
+      "#contact h2": "연락처",
+      ".contact-link:nth-child(1) span": "이메일",
+      ".contact-link:nth-child(2) span": "링크드인",
+      ".contact-link:nth-child(3) span": "깃허브",
+      ".footer-inner span:nth-child(2)": "데이터 사이언스 & 경제학 / UW–Madison"
     };
 
-    const koreanHiddenSelectors = [
-      ".hero-copy p:nth-child(1)",
-      ".hero-copy p:nth-child(2)",
-      ".timeline-item:nth-child(3)"
-    ];
+    const projectDetailsContent = {
+      hero: {
+        type: { en: "Healthcare AI", ko: "헬스케어 AI" },
+        date: { en: "May 2026 – Aug 2026", ko: "2026년 5월 – 8월" },
+        title: { en: "HERO Wearable Emergency Monitoring App", ko: "HERO 웨어러블 응급 모니터링 앱" },
+        overview: {
+          en: "Designed a wearable-based emergency monitoring concept to help older adults in rural areas get timely support.",
+          ko: "농촌 지역 고령자가 위급 상황에서 신속하게 도움을 받을 수 있도록 웨어러블 기반 응급 모니터링 서비스 콘셉트를 설계했습니다."
+        },
+        contributions: {
+          en: [
+            "Mapped a response flow connecting Galaxy Fit health signals with real-time anomaly detection and emergency escalation.",
+            "Designed integrations for AI voice calls, location sharing, and emergency alerts using Health Connect, Supabase, Twilio, Claude, Kakao Map, and weather APIs."
+          ],
+          ko: [
+            "Galaxy Fit 건강 신호를 실시간 이상 징후 감지와 응급 대응 흐름에 연결하는 서비스 과정을 설계했습니다.",
+            "Health Connect, Supabase, Twilio, Claude, Kakao Map 및 날씨 API를 활용한 AI 음성 통화, 위치 공유, 긴급 알림 연동을 구상했습니다."
+          ]
+        },
+        tools: ["Galaxy Fit", "Health Connect", "Supabase", "Twilio", "Claude", "Kakao Map API", "Weather APIs"],
+        github: null
+      },
+      jhhs: {
+        type: { en: "Research Mentoring", ko: "리서치 멘토링" },
+        date: { en: "May 2026 – Sep 2026", ko: "2026년 5월 – 9월" },
+        title: { en: "JHHS STEM Research Mentoring", ko: "JHHS STEM 리서치 멘토링" },
+        overview: {
+          en: "Mentored a high school research team and helped build an interactive molecular analysis and prediction web app.",
+          ko: "고등학생 연구팀을 멘토링하고 분자 분석과 예측을 위한 인터랙티브 웹 앱 개발을 지원했습니다."
+        },
+        contributions: {
+          en: [
+            "Integrated RDKit molecular data pipelines and Gemini API explanations into a web experience for compound analysis.",
+            "Guided project scoping, data workflows, model evaluation, and implementation.",
+            "The public repository contains the AI Drug Risk Analyzer built with PubChem, RDKit, and Gemini."
+          ],
+          ko: [
+            "RDKit 분자 데이터 파이프라인과 Gemini API 설명 기능을 화합물 분석 웹 앱에 연동했습니다.",
+            "프로젝트 범위 설정부터 데이터 흐름, 모델 평가, 구현까지 고등학생 팀의 연구 과정을 지도했습니다.",
+            "공개 저장소에서 PubChem, RDKit, Gemini 기반 AI Drug Risk Analyzer를 확인할 수 있습니다."
+          ]
+        },
+        tools: ["Python", "RDKit", "Gemini API", "PubChem", "Streamlit"],
+        github: "https://github.com/jzikim/rdkit-solubility-assistant"
+      },
+      vla: {
+        type: { en: "Robotics & AI", ko: "로보틱스 및 AI" },
+        date: { en: "Sep 2026 – Present", ko: "2026년 9월 – 현재" },
+        title: { en: "VLA-Based Robotics Project", ko: "VLA 기반 로보틱스 프로젝트" },
+        overview: {
+          en: "Developed go-to-market strategies for a vision-language-action robotics project with Like Lion at UW–Madison.",
+          ko: "UW–Madison Like Lion과 함께 비전·언어·행동(VLA) 로보틱스 프로젝트의 시장 진출 전략을 수립했습니다."
+        },
+        contributions: {
+          en: [
+            "Conducted external outreach, partnership research, and stakeholder engagement across campus and industry.",
+            "Developed go-to-market strategies that aligned technical engineering execution with external partner priorities."
+          ],
+          ko: [
+            "교내외 조직과 업계 관계자를 대상으로 외부 협력 기회를 발굴하고 파트너십 조사 및 이해관계자 소통을 진행했습니다.",
+            "기술 개발 방향과 외부 파트너의 우선순위를 연결하는 시장 진출 전략을 수립했습니다."
+          ]
+        },
+        tools: ["VLA", "Robotics", "Go-to-Market Strategy", "Partnership Development"],
+        github: null
+      },
+      fintech: {
+        type: { en: "Finance Strategy", ko: "금융 전략" },
+        date: { en: "Jan 2026 – May 2026", ko: "2026년 1월 – 5월" },
+        title: { en: "Fintech Turnaround Proposal", ko: "핀테크 기업 회복 전략 제안" },
+        overview: {
+          en: "Developed a recovery strategy and investment-style recommendation for a fintech company facing financial and operational challenges.",
+          ko: "재무·운영 과제를 겪는 핀테크 기업을 대상으로 회복 전략과 투자 관점의 제안을 마련했습니다."
+        },
+        contributions: {
+          en: [
+            "Analyzed customer risk segments, fraud exposure, valuation assumptions, and operating KPIs.",
+            "Combined transaction anomaly detection and risk segmentation into a fintech turnaround proposal."
+          ],
+          ko: [
+            "고객 리스크 세그먼트, 사기 노출, 밸류에이션 가정 및 운영 KPI를 분석했습니다.",
+            "거래 이상 탐지와 리스크 세분화를 결합해 핀테크 회복 전략을 제안했습니다."
+          ]
+        },
+        tools: ["Risk Segmentation", "Fraud Exposure", "Valuation", "Operating KPIs"],
+        github: null
+      },
+      "internship-hunter": {
+        type: { en: "Automation", ko: "자동화" },
+        date: { en: "Aug 2026 – Present", ko: "2026년 8월 – 현재" },
+        title: { en: "Global Internship Hunter", ko: "글로벌 인턴십 헌터" },
+        overview: {
+          en: "Built an independent Python project that finds relevant opportunities across global internship platforms and delivers daily updates.",
+          ko: "여러 글로벌 채용 플랫폼에서 인턴십 공고를 찾아 매일 업데이트하는 Python 프로젝트를 개발했습니다."
+        },
+        contributions: {
+          en: [
+            "Built a pipeline to collect, deduplicate, and filter more than 4,300 job postings from global recruitment platforms.",
+            "Automated daily updates with GitHub Actions and Discord webhook alerts for newly identified opportunities."
+          ],
+          ko: [
+            "글로벌 채용 플랫폼에서 4,300건 이상의 공고를 수집·중복 제거·필터링하는 파이프라인을 구축했습니다.",
+            "GitHub Actions로 매일 업데이트를 자동화하고 새로운 공고를 Discord 웹훅으로 알리도록 구현했습니다."
+          ]
+        },
+        tools: ["Python", "Pandas", "GitHub Actions", "Discord Webhooks"],
+        github: "https://github.com/jzikim/global-internship-hunter"
+      }
+    };
+
+    const projectDialog = document.querySelector("#project-dialog");
+    const projectDialogTitle = document.querySelector("#project-dialog-title");
+    const projectDialogType = document.querySelector("#project-dialog-type");
+    const projectDialogDate = document.querySelector("#project-dialog-date");
+    const projectDialogOverview = document.querySelector("#project-dialog-overview");
+    const projectDialogContributions = document.querySelector("#project-dialog-contributions");
+    const projectDialogTools = document.querySelector("#project-dialog-tools");
+    const projectDialogGithub = document.querySelector("#project-dialog-github");
+    const projectDialogLabels = {
+      en: {
+        contributions: "What I did",
+        tools: "Tools & technologies",
+        github: "View project on GitHub ↗",
+        close: "Close",
+        closeLabel: "Close project details"
+      },
+      ko: {
+        contributions: "주요 내용",
+        tools: "사용 기술",
+        github: "GitHub에서 프로젝트 보기 ↗",
+        close: "닫기",
+        closeLabel: "프로젝트 상세 닫기"
+      }
+    };
+    let activeProjectId = null;
+
+    function renderProjectDetails(projectId) {
+      const project = projectDetailsContent[projectId];
+      if (!project) {
+        console.error(`Unknown project details: ${projectId}`);
+        return;
+      }
+
+      const language = document.documentElement.lang === "ko" ? "ko" : "en";
+      const labels = projectDialogLabels[language];
+      projectDialogType.textContent = project.type[language];
+      projectDialogDate.textContent = project.date[language];
+      projectDialogTitle.textContent = project.title[language];
+      projectDialogOverview.textContent = project.overview[language];
+      document.querySelector("#project-dialog-contributions-label").textContent = labels.contributions;
+      document.querySelector("#project-dialog-tools-label").textContent = labels.tools;
+      projectDialogContributions.replaceChildren(...project.contributions[language].map((contribution) => {
+        const item = document.createElement("li");
+        item.textContent = contribution;
+        return item;
+      }));
+      projectDialogTools.replaceChildren(...project.tools.map((tool) => {
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = tool;
+        return tag;
+      }));
+
+      projectDialogGithub.hidden = !project.github;
+      if (project.github) {
+        projectDialogGithub.href = project.github;
+        projectDialogGithub.textContent = labels.github;
+      } else {
+        projectDialogGithub.removeAttribute("href");
+      }
+
+      document.querySelector(".project-dialog-close-action").textContent = labels.close;
+      document.querySelector(".project-dialog-close").setAttribute("aria-label", labels.closeLabel);
+    }
 
     const originalText = new Map();
     Object.keys(koreanText).forEach((selector) => {
@@ -1245,20 +1648,52 @@
         }
       });
 
-      koreanHiddenSelectors.forEach((selector) => {
-        const element = document.querySelector(selector);
-        if (element) {
-          element.hidden = isKorean;
-        }
-      });
-
       document.documentElement.lang = isKorean ? "ko" : "en";
       document.title = isKorean
         ? "김중혁 | 데이터 사이언스 & 경제학"
         : "Joonghyuk Kim | Data Science & Economics";
       languageToggle.textContent = isKorean ? "EN" : "KR";
       languageToggle.setAttribute("aria-label", isKorean ? "Switch to English" : "Switch to Korean");
+
+      if (projectDialog.open && activeProjectId) {
+        renderProjectDetails(activeProjectId);
+      }
     }
+
+    document.querySelectorAll(".project-details-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const projectId = button.dataset.project;
+        if (!projectId || !projectDetailsContent[projectId]) {
+          console.error(`Unknown project details: ${projectId}`);
+          return;
+        }
+
+        activeProjectId = projectId;
+        renderProjectDetails(projectId);
+        projectDialog.showModal();
+      });
+    });
+
+    document.querySelectorAll(".project-dialog-close, .project-dialog-close-action").forEach((button) => {
+      button.addEventListener("click", () => projectDialog.close());
+    });
+
+    projectDialog.addEventListener("click", (event) => {
+      if (event.target === projectDialog) {
+        projectDialog.close();
+      }
+    });
+
+    projectDialog.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        projectDialog.close();
+      }
+    });
+
+    projectDialog.addEventListener("close", () => {
+      activeProjectId = null;
+    });
 
     languageToggle.addEventListener("click", () => {
       setLanguage(document.documentElement.lang === "ko" ? "en" : "ko");
